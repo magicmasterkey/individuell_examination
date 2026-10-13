@@ -132,7 +132,7 @@ function checkTime() {
   const currentTime = new Date();
   const currentDay = currentTime.getDay();
   const currentHour = currentTime.getHours();
-  const currentMinute = currentTime.getMinutes() - 1;
+  const currentMinute = currentTime.getMinutes() + 1;
   const currentSecond = currentTime.getSeconds();
 
   if (currentDay > 0 && currentDay <= 5) {
