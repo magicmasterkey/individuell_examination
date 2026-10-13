@@ -36,7 +36,7 @@ function displayClock(day, hour, minute, second, status) {
         }
       }
       clock.textContent =
-        "Vi har stänger om: " +
+        "Vi stänger om: " +
         closesIn[0] +
         ":" +
         closesIn[1] +
@@ -51,7 +51,7 @@ function displayClock(day, hour, minute, second, status) {
         }
       }
       clock.textContent =
-        "Vi har stänger om: " +
+        "Vi stänger om: " +
         closesIn[0] +
         ":" +
         closesIn[1] +
@@ -132,7 +132,7 @@ function checkTime() {
   const currentTime = new Date();
   const currentDay = currentTime.getDay();
   const currentHour = currentTime.getHours();
-  const currentMinute = currentTime.getMinutes();
+  const currentMinute = currentTime.getMinutes() - 1;
   const currentSecond = currentTime.getSeconds();
 
   if (currentDay > 0 && currentDay <= 5) {
