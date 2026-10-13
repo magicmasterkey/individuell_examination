@@ -1,0 +1,1 @@
+Tagit hjälp av ChatGPT för att hitta på textinnehåll.

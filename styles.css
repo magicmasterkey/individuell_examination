@@ -1,0 +1,162 @@
+/* Mobile & global styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+}
+
+body {
+  background-color: sandybrown;
+}
+
+.alignHeader {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  background-color: chocolate;
+  font-size: 4rem;
+  color: white;
+  padding: 1rem;
+}
+
+#mobileNavToggle {
+  height: 5rem;
+  grid-column-start: 2;
+}
+
+#mobileNavbar {
+  display: none;
+}
+
+#desktopNavbar {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  list-style: none;
+  background-color:tomato;
+  grid-column-start: 1;
+}
+
+.navList a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+.hero {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.mediumText {
+  font-size: 1.4rem;
+  color: white;
+}
+
+#openStatus {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.openHours {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+#services {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.serviceCard {
+  color: white;
+  width: 80%;
+  background-color: chocolate;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: space-evenly;
+}
+
+.serviceCard h2 {
+  text-decoration: underline;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  #mobileNavToggle {
+    display: none;
+  }
+
+  #desktopNavbar {
+    display: block;
+  }
+
+  .alignHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navList {
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: none;
+    gap: 3rem;
+  }
+
+  .hero p {
+    width: 60%;
+  }
+
+  #services {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    gap: 1rem;
+    padding-left: 15%;
+  }
+
+  #service1,
+  #service3 {
+    grid-column-start: 1;
+  }
+
+  #service2,
+  #service4 {
+    grid-column-start: 2;
+  }
+
+  .serviceCard {
+    width: 60%;
+    height: 15rem;
+  }
+}

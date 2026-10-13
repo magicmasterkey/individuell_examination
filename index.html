@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hundpensionatet Tassen</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="alignHeader">
+        <span>Tassen</span>
+        <nav id="desktopNavbar">
+          <ul class="navList">
+            <li><a href="#services">Våra tjänster</a></li>
+            <li><a href="#openStatus">Öppet tider</a></li>
+            <li><a href="#booking">Boka tid</a></li>
+            <li><a href="#contact">Kontakta oss</a></li>
+          </ul>
+        </nav>
+        <img
+          src="images/hamburger-menu-svgrepo-com.svg"
+          alt="Hamburger menu icon"
+          id="mobileNavToggle"
+        />
+      </div>
+      <nav id="mobileNavbar">
+        <ul class="navList">
+          <li><a href="#services">Våra tjänster</a></li>
+          <li><a href="#openStatus">Öppet tider</a></li>
+          <li><a href="#booking">Boka tid</a></li>
+          <li><a href="#contact">Kontakta oss</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Tassen</h1>
+        <p class="mediumText">
+          På Tassen får din hund all kärlek, lek och omsorg den förtjänar. Med
+          trygga miljöer, långa promenader och massor av gos ser vi till att din
+          fyrbenta vän känner sig som hemma – även när du är borta.
+        </p>
+      </section>
+      <section class="openHours">
+        <div id="openStatus" class="mediumText"></div>
+        <p class="mediumText">
+          Våra öppettider är: <br />Mån–fre: 07–18, <br />Lördag: 09–14,
+          <br />Söndag: stängt
+        </p>
+      </section>
+      <section id="services">
+        <article class="serviceCard" id="service1">
+          <h2>Hunddagis halvdag</h2>
+          <p class="mediumText">
+            Medans du jobbar, pluggar eller är upptagen med annan daglig
+            aktivitet får din hund leka, gå på promenader och vila hos oss!
+          </p>
+          <button>Boka!</button>
+        </article>
+        <article class="serviceCard" id="service2">
+          <h2>Hunddagis heldag</h2>
+          <p class="mediumText">
+            Medans du jobbar, pluggar eller är upptagen med annan daglig
+            aktivitet får din hund leka, gå på promenader och vila hos oss!
+          </p>
+          <button>Boka!</button>
+        </article>
+        <article class="serviceCard" id="service3">
+          <h2>Pensionat</h2>
+          <p class="mediumText">
+            Bortrest? Inga problem! Din hund får övernatta och blir väl
+            omhandtagen tills du kommer hem igen.
+          </p>
+          <button>Boka!</button>
+        </article>
+        <article class="serviceCard" id="service4">
+          <h2>Bad & Pälsvård</h2>
+          <p class="mediumText">
+            Är vovven tuffsig, älskar att rulla runt utomhus eller bara inte
+            vill bli badad hemma? Vi har många års ärfarenhet av att tryggt och
+            lugnt ta hand om alla sorters hundars päls.
+          </p>
+          <button>Boka!</button>
+        </article>
+      </section>
+      <section id="booking"></section>
+    </main>
+
+    <!-- TODO: Adress, Tele, Email. -->
+    <footer id="contact"></footer>
+  </body>
+</html>
