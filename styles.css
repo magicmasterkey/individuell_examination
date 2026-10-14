@@ -39,7 +39,7 @@ body {
   gap: 1rem;
   padding: 1rem;
   list-style: none;
-  background-color:tomato;
+  background-color: tomato;
   grid-column-start: 1;
 }
 
@@ -104,6 +104,49 @@ body {
 
 .serviceCard h2 {
   text-decoration: underline;
+}
+
+.userInputSection {
+  padding: 1rem;
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: white;
+}
+
+#booking {
+  margin-top: 2rem;
+  background-color: tomato;
+}
+
+#reviewSection {
+  background-color: chocolate;
+}
+
+.review {
+  background-color: sandybrown;
+  border-radius: 3rem;
+  width: 90%;
+  padding: 1rem;
+}
+
+#contact {
+  margin-top: 2rem;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+#contact a {
+  color: white;
 }
 
 /* Tablet styles */
