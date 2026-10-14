@@ -59,7 +59,7 @@
             Medans du jobbar, pluggar eller är upptagen med annan daglig
             aktivitet får din hund leka, gå på promenader och vila hos oss!
           </p>
-          <button>Boka!</button>
+          <button class="serviceButton" id="halfDayBtn">Boka!</button>
         </article>
         <article class="serviceCard" id="service2">
           <h2>Hunddagis heldag</h2>
@@ -67,7 +67,7 @@
             Medans du jobbar, pluggar eller är upptagen med annan daglig
             aktivitet får din hund leka, gå på promenader och vila hos oss!
           </p>
-          <button>Boka!</button>
+          <button class="serviceButton" id="fullDayBtn">Boka!</button>
         </article>
         <article class="serviceCard" id="service3">
           <h2>Pensionat</h2>
@@ -75,7 +75,7 @@
             Bortrest? Inga problem! Din hund får övernatta och blir väl
             omhandtagen tills du kommer hem igen.
           </p>
-          <button>Boka!</button>
+          <button class="serviceButton" id="longTermBtm">Boka!</button>
         </article>
         <article class="serviceCard" id="service4">
           <h2>Bad & Pälsvård</h2>
@@ -84,7 +84,7 @@
             vill bli badad hemma? Vi har många års ärfarenhet av att tryggt och
             lugnt ta hand om alla sorters hundars päls.
           </p>
-          <button>Boka!</button>
+          <button class="serviceButton" id="careBtn">Boka!</button>
         </article>
       </section>
       <section id="booking" class="userInputSection">
@@ -104,9 +104,10 @@
           </article>
         </div>
         <div class="writeReview">
-          <label for=""></label>
-          <input type="text">
-          <input type="submit">
+          <label for="reviewTitle">Skriv din recension!</label>
+          <input type="text" name="reviewTitle" placeholder="Din titel...">
+          <input type="text" name="reviewText" placeholder="Jag tycker...">
+          <input type="submit" value="Skicka">
         </div>
       </section>
     </main>

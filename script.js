@@ -1,3 +1,4 @@
+/* Mobil nav funktionalitet */
 const navButton = document.getElementById("mobileNavToggle");
 
 navButton.addEventListener("click", () => {
@@ -9,6 +10,7 @@ navButton.addEventListener("click", () => {
   }
 });
 
+/* Dessa tre funktioner beräknar om det är öppet, visar om det är öppet eller inte, och visar hur länge till dem stänger eller öppnar igen */
 function displayOpenClosed(status) {
   const displayedStatus = document.getElementById("openStatus");
 
@@ -36,12 +38,7 @@ function displayClock(day, hour, minute, second, status) {
         }
       }
       clock.textContent =
-        "Vi stänger om: " +
-        closesIn[0] +
-        ":" +
-        closesIn[1] +
-        ":" +
-        closesIn[2];
+        "Vi stänger om: " + closesIn[0] + ":" + closesIn[1] + ":" + closesIn[2];
     } else {
       /* Om det är lördag */
       const closesIn = [13 - hour, 60 - minute, 60 - second];
@@ -51,12 +48,7 @@ function displayClock(day, hour, minute, second, status) {
         }
       }
       clock.textContent =
-        "Vi stänger om: " +
-        closesIn[0] +
-        ":" +
-        closesIn[1] +
-        ":" +
-        closesIn[2];
+        "Vi stänger om: " + closesIn[0] + ":" + closesIn[1] + ":" + closesIn[2];
     }
   } else if (status === false) {
     /* Om det är stängt */
@@ -168,5 +160,13 @@ function checkTime() {
     displayClock(currentDay, currentHour, currentMinute, currentSecond, false);
   }
 }
-
+/* Anropa "checkTime" varje 1000 millisekunder, dvs varje sekund */
 setInterval(checkTime, 1000);
+
+/* Localstorage stuff yippieeeee kill me now */
+const bookedServices = [];
+
+const halfDayBtn = document.getElementById("halfDayBtn");
+const fullDayBtn = document.getElementById("fullDayBtn");
+const longTermBtn = document.getElementById("longTermBtn");
+const careBtn = document.getElementById("careBtn");
