@@ -117,6 +117,11 @@ body {
   color: white;
 }
 
+.userInputSection h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
 #booking {
   margin-top: 2rem;
   background-color: tomato;
@@ -128,9 +133,18 @@ body {
 
 .review {
   background-color: sandybrown;
-  border-radius: 3rem;
+  border-radius: 1rem;
   width: 90%;
   padding: 1rem;
+}
+
+.review h3 {
+  font-size: 1.8rem;
+  text-decoration: underline;
+}
+
+.review p {
+  font-size: 1.5rem;
 }
 
 #contact {
@@ -201,5 +215,14 @@ body {
   .serviceCard {
     width: 60%;
     height: 15rem;
+  }
+
+  .review {
+    width: 20rem;
+  }
+
+  #contact {
+    margin: 2rem;
+    flex-direction: row;
   }
 }
