@@ -166,7 +166,39 @@ setInterval(checkTime, 1000);
 /* Localstorage stuff yippieeeee kill me now */
 const bookedServices = [];
 
+const bookingSection = document.getElementById("booking");
 const halfDayBtn = document.getElementById("halfDayBtn");
 const fullDayBtn = document.getElementById("fullDayBtn");
 const longTermBtn = document.getElementById("longTermBtn");
 const careBtn = document.getElementById("careBtn");
+
+function renderBookedServices() {
+  const toRender = JSON.parse(localStorage.getItem("storedServices") || []);
+
+  toRender.forEach((element) => console.log("Hej"));
+}
+
+function storeBookedService() {
+  localStorage.setItem("storedServices", JSON.stringify(bookedServices));
+  renderBookedServices();
+}
+
+halfDayBtn.addEventListener("click", () => {
+  bookedServices.push("halfDay");
+  storeBookedService();
+});
+
+fullDayBtn.addEventListener("click", () => {
+  bookedServices.push("fullDay");
+  storeBookedService();
+});
+
+longTermBtn.addEventListener("click", () => {
+  bookedServices.push("longTerm");
+  storeBookedService();
+});
+
+careBtn.addEventListener("click", () => {
+  bookedServices.push("care");
+  storeBookedService();
+});
