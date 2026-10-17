@@ -174,10 +174,10 @@ const longTermBtn = document.getElementById("longTermBtn");
 const careBtn = document.getElementById("careBtn");
 
 function renderBookedServices() {
-  const toRender = JSON.parse(localStorage.getItem("storedServices") || []);
   const container = document.getElementById("bookingCardContainer");
   if (bookedServices.length !== 0) {
     container.innerHTML = "";
+    const toRender = JSON.parse(localStorage.getItem("storedServices") || []);
 
     toRender.forEach((element) => {
       if (element === "halfDay") {
@@ -260,7 +260,63 @@ careBtn.addEventListener("click", () => {
 storeBookedService();
 
 /* Recensioner */
+const reviewTitle = document.getElementById("reviewTitle");
+const reviewScore = document.getElementById("reviewScore");
+const reviewContent = document.getElementById("reviewContent");
+const author = document.getElementById("author");
 
-const reviews = document.querySelector(".reviewsContainer");
-const reviewTitle = document.getElementById("inputTitle");
-const reviewContent = document.getElementById("inputContent");
+const nextReview = document.getElementById("nextReview");
+
+class Review {
+  constructor(title, score, content, author) {
+    this.title = title;
+    this.score = score;
+    this.content = content;
+    this.author = author;
+  }
+
+  getTitle(){
+    return this.title;
+  }
+
+  getScore(){
+    return this.score;
+  }
+
+  getContent(){
+    return this.content;
+  }
+
+  getAuthor(){
+    return this.author;
+  }
+}
+
+const r1 = new Review(
+  "Dunderbra!",
+  "5",
+  "Ett fantastiskt hundpensionat med kunnig och omtänksam personal som verkligen bryr sig om hundarna.",
+  "Jocke Ek",
+);
+
+const r2 = new Review(
+  "Trevlig personal",
+  "4",
+  "Trevlig personal och utmärkt service – vi lämnar gärna vår hund här igen.",
+  "Maggan Bengtsson",
+);
+
+const r3 = new Review("Hej")
+
+const r4 = new Review("Hejdå")
+
+const r5 = new Review("Tjaaa")
+
+nextReview.addEventListener("click", () => {
+  const chosenReview = Math.floor(Math.random() * 5) + 1;
+
+  if (chosenReview === 1){
+    reviewTitle.textContent = r1.getReview();
+    reviewScore.textContent = r1.getScore();
+  }
+});
