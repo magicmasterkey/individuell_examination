@@ -189,7 +189,7 @@ function renderBookedServices() {
         bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Halvdag";
         bookedContent.textContent =
-          "Vi tar hand om din hund i upp till 4 timmar";
+          "Du har bokat en halvdag på hunddagis. Vad kul!";
         bookedCard.append(bookedTitle, bookedContent);
         container.append(bookedCard);
       } else if (element === "fullDay") {
@@ -200,7 +200,7 @@ function renderBookedServices() {
         bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Heldag";
         bookedContent.textContent =
-          "Vi tar hand om din hund i upp till 8 timmar.";
+          "Du har bokat en heldag på hunddagis. Mycket lek väntar!";
         bookedCard.append(bookedTitle, bookedContent);
         container.append(bookedCard);
       } else if (element === "longTerm") {
@@ -211,7 +211,7 @@ function renderBookedServices() {
         bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Pensionat";
         bookedContent.textContent =
-          "Vi tar hand om din hund som får övernatta hos oss i upp till 5 dagar.";
+          "Du har bokat hundpensionat. Vi kommer ta bra hand om din vän!";
         bookedCard.append(bookedTitle, bookedContent);
         container.append(bookedCard);
       } else {
@@ -222,7 +222,7 @@ function renderBookedServices() {
         bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Pälsvård";
         bookedContent.textContent =
-          "Din hund kommer få ett härligt bad och professionell pälsvård.";
+          "Du har bokat bad och pälsvård. Nu ska pälsen bli som ny!";
         bookedCard.append(bookedTitle, bookedContent);
         container.append(bookedCard);
       }
@@ -320,35 +320,35 @@ const r1 = new Review(
   "Dunderbra!",
   "10/10",
   "Ett fantastiskt hundpensionat med kunnig och omtänksam personal som verkligen bryr sig om hundarna.",
-  "Jocke Ek",
+  "-Jocke Ek",
 );
 
 const r2 = new Review(
   "Trevlig personal",
   "9/10",
   "Trevlig personal och utmärkt service – vi lämnar gärna vår hund här igen.",
-  "Maggan Bengtsson",
+  "-Maggan Bengtsson",
 );
 
 const r3 = new Review(
   "Vovvens nya favorit!",
   "9/10",
   "Vår hund trivdes jättebra och kom hem både glad och nöjd!",
-  "Sven Larsson",
+  "-Sven Larsson",
 );
 
 const r4 = new Review(
   "Väldigt professionella.",
   "10/10",
   "Tryggt, rent och välskött hundpensionat som vi varmt rekommenderar.",
-  "Stina Gren",
+  "-Stina Gren",
 );
 
 const r5 = new Review(
   "Rekommenderar!",
   "8/10",
   "Ett toppenställe där hundarna får massor av kärlek, omsorg och uppmärksamhet.",
-  "Lena Stenmark",
+  "-Lena Stenmark",
 );
 
 function displayRandomReview() {

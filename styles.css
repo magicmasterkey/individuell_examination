@@ -102,6 +102,27 @@ body {
   justify-content: space-evenly;
 }
 
+button {
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  background-color: sandybrown;
+  color: white;
+  border: none;
+  transition: ease 1s;
+}
+
+button:hover {
+  transition: ease 0.5s;
+  background-color: saddlebrown;
+}
+
+button:active {
+  transition: ease 0.25s;
+  background-color: white;
+  color: black;
+}
+
 .serviceCard h2 {
   text-decoration: underline;
 }
@@ -147,11 +168,30 @@ body {
   background-color: chocolate;
 }
 
+.reviewsContainer {
+  margin-bottom: 2rem;
+}
+
 .review {
   background-color: sandybrown;
   border-radius: 1rem;
   width: 90%;
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  gap: 0.5rem;
+}
+
+#reviewTitle,
+#reviewContent,
+#author {
+  grid-column-start: 1;
+}
+
+#reviewScore {
+  grid-column-start: 2;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .review h3 {
@@ -233,12 +273,20 @@ body {
     height: 15rem;
   }
 
+  #bookingCardContainer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
   .bookingCard {
     width: 20rem;
   }
 
   .review {
-    width: 20rem;
+    max-width: 35rem;
+    grid-template-columns: 85% 15%;
   }
 
   #contact {
