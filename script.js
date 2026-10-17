@@ -23,7 +23,7 @@ function displayOpenClosed(status) {
   }
 }
 
-/* Antagligen det sämsta möjliga sätt att göra detta och jag gråter på insidan */
+/* Jag ber om ursäkt till dig som läser denna kod, men detta funkar */
 function displayClock(day, hour, minute, second, status) {
   const clock = document.getElementById("clock");
 
@@ -32,6 +32,7 @@ function displayClock(day, hour, minute, second, status) {
     if (day < 6) {
       /* Om det är vardag */
       const closesIn = [17 - hour, 60 - minute, 60 - second];
+      /* Läste in på tillräckligt i tid så har återuppfunnit hjulet, eller i detta fall manuellt lagt till en nolla framför för att alltid ha tvåsiffrigt */
       for (let i = 0; i < 3; i++) {
         if (closesIn[i] < 10) {
           closesIn[i] = "0" + closesIn[i];
@@ -163,7 +164,7 @@ function checkTime() {
 /* Anropa "checkTime" varje 1000 millisekunder, dvs varje sekund */
 setInterval(checkTime, 1000);
 
-/* Localstorage stuff yippieeeee kill me now */
+/* Bokade tjänster */
 const bookedServices = [];
 
 const bookingSection = document.getElementById("booking");
@@ -258,10 +259,8 @@ careBtn.addEventListener("click", () => {
 
 storeBookedService();
 
-/* Reviews */
+/* Recensioner */
 
 const reviews = document.querySelector(".reviewsContainer");
 const reviewTitle = document.getElementById("inputTitle");
 const reviewContent = document.getElementById("inputContent");
-
-
