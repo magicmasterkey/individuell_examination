@@ -127,6 +127,22 @@ body {
   background-color: tomato;
 }
 
+.bookingCard {
+  background-color: sandybrown;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  width: 90%;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bookingCard h3 {
+  font-size: 1.8rem;
+  text-decoration: underline;
+}
+
 #reviewSection {
   background-color: chocolate;
 }
@@ -215,6 +231,10 @@ body {
   .serviceCard {
     width: 60%;
     height: 15rem;
+  }
+
+  .bookingCard {
+    width: 20rem;
   }
 
   .review {

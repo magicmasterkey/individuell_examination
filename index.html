@@ -15,7 +15,7 @@
           <ul class="navList">
             <li><a href="#services">Våra tjänster</a></li>
             <li><a href="#openStatus">Öppet tider</a></li>
-            <li><a href="#booking">Boka tid</a></li>
+            <li><a href="#booking">Boknigar</a></li>
             <li><a href="#contact">Kontakta oss</a></li>
           </ul>
         </nav>
@@ -88,7 +88,15 @@
         </article>
       </section>
       <section id="booking" class="userInputSection">
-        <h2>Här visas dina bokningar</h2>
+        <h2>Dina bokningar</h2>
+        <div id="bookingCardContainer">
+          <article class="bookingCard">
+            <h3>Ingen bokning ännu</h3>
+            <p class="mediumText">
+              När du bokat ett tjänst hos oss kommer den dyka upp här
+            </p>
+          </article>
+        </div>
       </section>
       <section id="reviewSection" class="userInputSection">
         <h2>Recensioner från glada kunder</h2>
@@ -102,12 +110,6 @@
               magni!
             </p>
           </article>
-        </div>
-        <div class="writeReview">
-          <label for="reviewTitle">Skriv din recension!</label>
-          <input type="text" name="reviewTitle" placeholder="Din titel...">
-          <input type="text" name="reviewText" placeholder="Jag tycker...">
-          <input type="submit" value="Skicka">
         </div>
       </section>
     </main>

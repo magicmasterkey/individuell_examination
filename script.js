@@ -174,31 +174,94 @@ const careBtn = document.getElementById("careBtn");
 
 function renderBookedServices() {
   const toRender = JSON.parse(localStorage.getItem("storedServices") || []);
+  const container = document.getElementById("bookingCardContainer");
+  if (bookedServices.length !== 0) {
+    container.innerHTML = "";
 
-  toRender.forEach((element) => console.log("Hej"));
+    toRender.forEach((element) => {
+      if (element === "halfDay") {
+        const bookedCard = document.createElement("article");
+        bookedCard.classList.add("bookingCard");
+        const bookedTitle = document.createElement("h3");
+        const bookedContent = document.createElement("p");
+        bookedTitle.textContent = "Halvdag";
+        bookedContent.textContent =
+          "Vi tar hand om din hund i upp till 4 timmar";
+        bookedCard.append(bookedTitle, bookedContent);
+        container.append(bookedCard);
+      } else if (element === "fullDay") {
+        const bookedCard = document.createElement("article");
+        bookedCard.classList.add("bookingCard");
+        const bookedTitle = document.createElement("h3");
+        const bookedContent = document.createElement("p");
+        bookedTitle.textContent = "Heldag";
+        bookedContent.textContent =
+          "Vi tar hand om din hund i upp till 8 timmar.";
+        bookedCard.append(bookedTitle, bookedContent);
+        container.append(bookedCard);
+      } else if (element === "longTerm") {
+        const bookedCard = document.createElement("article");
+        bookedCard.classList.add("bookingCard");
+        const bookedTitle = document.createElement("h3");
+        const bookedContent = document.createElement("p");
+        bookedTitle.textContent = "Pensionat";
+        bookedContent.textContent =
+          "Vi tar hand om din hund som får övernatta hos oss i upp till 5 dagar.";
+        bookedCard.append(bookedTitle, bookedContent);
+        container.append(bookedCard);
+      } else {
+        const bookedCard = document.createElement("article");
+        bookedCard.classList.add("bookingCard");
+        const bookedTitle = document.createElement("h3");
+        const bookedContent = document.createElement("p");
+        bookedTitle.textContent = "Pälsvård";
+        bookedContent.textContent =
+          "Din hund kommer få ett härligt bad och professionell pälsvård.";
+        bookedCard.append(bookedTitle, bookedContent);
+        container.append(bookedCard);
+      }
+    });
+  }
 }
 
-function storeBookedService() {
-  localStorage.setItem("storedServices", JSON.stringify(bookedServices));
+function storeBookedService(service) {
+  if (bookedServices.length === 0) {
+    const previousBookings = JSON.parse(
+      localStorage.getItem("storedServices") || "[]",
+    );
+    previousBookings.forEach((booking) => {
+      bookedServices.push(booking);
+    });
+  }
+  if (service) {
+    bookedServices.push(service);
+    localStorage.setItem("storedServices", JSON.stringify(bookedServices));
+  }
   renderBookedServices();
 }
 
 halfDayBtn.addEventListener("click", () => {
-  bookedServices.push("halfDay");
-  storeBookedService();
+  storeBookedService("halfDay");
 });
 
 fullDayBtn.addEventListener("click", () => {
-  bookedServices.push("fullDay");
-  storeBookedService();
+  storeBookedService("fullDay");
 });
 
 longTermBtn.addEventListener("click", () => {
-  bookedServices.push("longTerm");
-  storeBookedService();
+  storeBookedService("longTerm");
 });
 
 careBtn.addEventListener("click", () => {
-  bookedServices.push("care");
-  storeBookedService();
+  storeBookedService("care");
 });
+
+storeBookedService();
+
+/* Reviews */
+
+const reviews = document.querySelector(".reviewsContainer");
+const reviewTitle = document.getElementById("inputTitle");
+const reviewContent = document.getElementById("inputContent");
+
+
