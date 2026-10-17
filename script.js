@@ -165,16 +165,17 @@ function checkTime() {
 setInterval(checkTime, 1000);
 
 /* Bokade tjänster */
-const bookedServices = [];
+let bookedServices = [];
 
 const bookingSection = document.getElementById("booking");
 const halfDayBtn = document.getElementById("halfDayBtn");
 const fullDayBtn = document.getElementById("fullDayBtn");
 const longTermBtn = document.getElementById("longTermBtn");
 const careBtn = document.getElementById("careBtn");
+const container = document.getElementById("bookingCardContainer");
 
+/* Borde gjort detta som en klass men kom på det för sent och ville inte göra om */
 function renderBookedServices() {
-  const container = document.getElementById("bookingCardContainer");
   if (bookedServices.length !== 0) {
     container.innerHTML = "";
     const toRender = JSON.parse(localStorage.getItem("storedServices") || []);
@@ -185,6 +186,7 @@ function renderBookedServices() {
         bookedCard.classList.add("bookingCard");
         const bookedTitle = document.createElement("h3");
         const bookedContent = document.createElement("p");
+        bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Halvdag";
         bookedContent.textContent =
           "Vi tar hand om din hund i upp till 4 timmar";
@@ -195,6 +197,7 @@ function renderBookedServices() {
         bookedCard.classList.add("bookingCard");
         const bookedTitle = document.createElement("h3");
         const bookedContent = document.createElement("p");
+        bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Heldag";
         bookedContent.textContent =
           "Vi tar hand om din hund i upp till 8 timmar.";
@@ -205,6 +208,7 @@ function renderBookedServices() {
         bookedCard.classList.add("bookingCard");
         const bookedTitle = document.createElement("h3");
         const bookedContent = document.createElement("p");
+        bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Pensionat";
         bookedContent.textContent =
           "Vi tar hand om din hund som får övernatta hos oss i upp till 5 dagar.";
@@ -215,6 +219,7 @@ function renderBookedServices() {
         bookedCard.classList.add("bookingCard");
         const bookedTitle = document.createElement("h3");
         const bookedContent = document.createElement("p");
+        bookedContent.classList.add("mediumText");
         bookedTitle.textContent = "Pälsvård";
         bookedContent.textContent =
           "Din hund kommer få ett härligt bad och professionell pälsvård.";
@@ -259,6 +264,25 @@ careBtn.addEventListener("click", () => {
 
 storeBookedService();
 
+const clearButton = document.getElementById("clearButton");
+
+clearButton.addEventListener("click", () => {
+  container.innerHTML = "";
+  bookedServices = [];
+  localStorage.setItem("storedServices", JSON.stringify(bookedServices));
+
+  const bookedCard = document.createElement("article");
+  bookedCard.classList.add("bookingCard");
+  const bookedTitle = document.createElement("h3");
+  const bookedContent = document.createElement("p");
+  bookedContent.classList.add("mediumText");
+  bookedTitle.textContent = "Inga bokningar ännu.";
+  bookedContent.textContent =
+    "När du bokat ett tjänst hos oss kommer den dyka upp här";
+  bookedCard.append(bookedTitle, bookedContent);
+  container.append(bookedCard);
+});
+
 /* Recensioner */
 const reviewTitle = document.getElementById("reviewTitle");
 const reviewScore = document.getElementById("reviewScore");
@@ -275,48 +299,91 @@ class Review {
     this.author = author;
   }
 
-  getTitle(){
+  getTitle() {
     return this.title;
   }
 
-  getScore(){
+  getScore() {
     return this.score;
   }
 
-  getContent(){
+  getContent() {
     return this.content;
   }
 
-  getAuthor(){
+  getAuthor() {
     return this.author;
   }
 }
 
 const r1 = new Review(
   "Dunderbra!",
-  "5",
+  "10/10",
   "Ett fantastiskt hundpensionat med kunnig och omtänksam personal som verkligen bryr sig om hundarna.",
   "Jocke Ek",
 );
 
 const r2 = new Review(
   "Trevlig personal",
-  "4",
+  "9/10",
   "Trevlig personal och utmärkt service – vi lämnar gärna vår hund här igen.",
   "Maggan Bengtsson",
 );
 
-const r3 = new Review("Hej")
+const r3 = new Review(
+  "Vovvens nya favorit!",
+  "9/10",
+  "Vår hund trivdes jättebra och kom hem både glad och nöjd!",
+  "Sven Larsson",
+);
 
-const r4 = new Review("Hejdå")
+const r4 = new Review(
+  "Väldigt professionella.",
+  "10/10",
+  "Tryggt, rent och välskött hundpensionat som vi varmt rekommenderar.",
+  "Stina Gren",
+);
 
-const r5 = new Review("Tjaaa")
+const r5 = new Review(
+  "Rekommenderar!",
+  "8/10",
+  "Ett toppenställe där hundarna får massor av kärlek, omsorg och uppmärksamhet.",
+  "Lena Stenmark",
+);
 
-nextReview.addEventListener("click", () => {
+function displayRandomReview() {
   const chosenReview = Math.floor(Math.random() * 5) + 1;
 
-  if (chosenReview === 1){
-    reviewTitle.textContent = r1.getReview();
+  if (chosenReview === 1) {
+    reviewTitle.textContent = r1.getTitle();
     reviewScore.textContent = r1.getScore();
+    reviewContent.textContent = r1.getContent();
+    author.textContent = r1.getAuthor();
+  } else if (chosenReview === 2) {
+    reviewTitle.textContent = r2.getTitle();
+    reviewScore.textContent = r2.getScore();
+    reviewContent.textContent = r2.getContent();
+    author.textContent = r2.getAuthor();
+  } else if (chosenReview === 3) {
+    reviewTitle.textContent = r3.getTitle();
+    reviewScore.textContent = r3.getScore();
+    reviewContent.textContent = r3.getContent();
+    author.textContent = r3.getAuthor();
+  } else if (chosenReview === 4) {
+    reviewTitle.textContent = r4.getTitle();
+    reviewScore.textContent = r4.getScore();
+    reviewContent.textContent = r4.getContent();
+    author.textContent = r4.getAuthor();
+  } else {
+    reviewTitle.textContent = r5.getTitle();
+    reviewScore.textContent = r5.getScore();
+    reviewContent.textContent = r5.getContent();
+    author.textContent = r5.getAuthor();
   }
+}
+
+nextReview.addEventListener("click", () => {
+  displayRandomReview();
 });
+
+displayRandomReview();
