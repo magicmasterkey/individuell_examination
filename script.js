@@ -174,95 +174,36 @@ const longTermBtn = document.getElementById("longTermBtn");
 const careBtn = document.getElementById("careBtn");
 const container = document.getElementById("bookingCardContainer");
 
-/* Borde gjort detta som en klass men kom på det för sent och ville inte göra om */
-function renderBookedServices() {
-  if (bookedServices.length !== 0) {
-    container.innerHTML = "";
-    const toRender = JSON.parse(localStorage.getItem("storedServices") || []);
-
-    toRender.forEach((element) => {
-      if (element === "halfDay") {
-        const bookedCard = document.createElement("article");
-        bookedCard.classList.add("bookingCard");
-        const bookedTitle = document.createElement("h3");
-        const bookedContent = document.createElement("p");
-        bookedContent.classList.add("mediumText");
-        bookedTitle.textContent = "Halvdag";
-        bookedContent.textContent =
-          "Du har bokat en halvdag på hunddagis. Vad kul!";
-        bookedCard.append(bookedTitle, bookedContent);
-        container.append(bookedCard);
-      } else if (element === "fullDay") {
-        const bookedCard = document.createElement("article");
-        bookedCard.classList.add("bookingCard");
-        const bookedTitle = document.createElement("h3");
-        const bookedContent = document.createElement("p");
-        bookedContent.classList.add("mediumText");
-        bookedTitle.textContent = "Heldag";
-        bookedContent.textContent =
-          "Du har bokat en heldag på hunddagis. Mycket lek väntar!";
-        bookedCard.append(bookedTitle, bookedContent);
-        container.append(bookedCard);
-      } else if (element === "longTerm") {
-        const bookedCard = document.createElement("article");
-        bookedCard.classList.add("bookingCard");
-        const bookedTitle = document.createElement("h3");
-        const bookedContent = document.createElement("p");
-        bookedContent.classList.add("mediumText");
-        bookedTitle.textContent = "Pensionat";
-        bookedContent.textContent =
-          "Du har bokat hundpensionat. Vi kommer ta bra hand om din vän!";
-        bookedCard.append(bookedTitle, bookedContent);
-        container.append(bookedCard);
-      } else {
-        const bookedCard = document.createElement("article");
-        bookedCard.classList.add("bookingCard");
-        const bookedTitle = document.createElement("h3");
-        const bookedContent = document.createElement("p");
-        bookedContent.classList.add("mediumText");
-        bookedTitle.textContent = "Pälsvård";
-        bookedContent.textContent =
-          "Du har bokat bad och pälsvård. Nu ska pälsen bli som ny!";
-        bookedCard.append(bookedTitle, bookedContent);
-        container.append(bookedCard);
-      }
-    });
+class Order {
+  constructor(service, dog) {
+    this.service = service;
+    this.dog = dog;
   }
+
+  createCard() {}
+
+  removeSelf() {}
 }
 
-function storeBookedService(service) {
-  if (bookedServices.length === 0) {
-    const previousBookings = JSON.parse(
-      localStorage.getItem("storedServices") || "[]",
-    );
-    previousBookings.forEach((booking) => {
-      bookedServices.push(booking);
-    });
-  }
-  if (service) {
-    bookedServices.push(service);
-    localStorage.setItem("storedServices", JSON.stringify(bookedServices));
-  }
-  renderBookedServices();
+function bookingForm(service) {
+  
 }
 
 halfDayBtn.addEventListener("click", () => {
-  storeBookedService("halfDay");
+  bookingForm(halfDay);
 });
 
 fullDayBtn.addEventListener("click", () => {
-  storeBookedService("fullDay");
+  bookingForm(fullDay);
 });
 
 longTermBtn.addEventListener("click", () => {
-  storeBookedService("longTerm");
+  bookingForm(longTerm);
 });
 
 careBtn.addEventListener("click", () => {
-  storeBookedService("care");
+  bookingForm(care);
 });
-
-storeBookedService();
 
 const clearButton = document.getElementById("clearButton");
 
