@@ -168,47 +168,87 @@ setInterval(checkTime, 1000);
 let bookedServices = [];
 
 const bookingSection = document.getElementById("booking");
-const halfDayBtn = document.getElementById("halfDayBtn");
-const fullDayBtn = document.getElementById("fullDayBtn");
-const longTermBtn = document.getElementById("longTermBtn");
-const careBtn = document.getElementById("careBtn");
-const container = document.getElementById("bookingCardContainer");
+const displayBookings = document.getElementById("bookingCardContainer");
+const displayForm = document.getElementById("formContainer");
 
 class Order {
   constructor(service, dog) {
     this.service = service;
     this.dog = dog;
+    this.card;
+    this.title;
+    this.description;
+    this.removeButton;
   }
 
-  createCard() {}
+  getContent() {
+    this.title = document.createElement("h3");
+    this.title.textContent = this.service;
+    this.description = document.createElement("p");
+    this.description.classList.add("mediumText");
+    this.description.innerHTML =
+      'Du har bokat tjänsten "' +
+      this.service.toLowerCase() +
+      '" hos oss, till din hund ' +
+      this.dog +
+      ". Vad kul!";
+  }
 
-  removeSelf() {}
+  createCard() {
+    this.card = document.createElement("article");
+    this.card.classList.add("bookingCard");
+    this.getContent();
+    this.removeButton = document.createElement("button");
+    this.card.append(this.title, this.description, this.removeButton);
+    displayBookings.append(this.card);
+  }
+
+  removeSelf() {
+    this.card.innerHTML = "";
+  }
 }
+
+const test = new Order("Halvdag", "Fido");
+test.createCard();
+
+test.removeButton.addEventListener("click", () => {
+  test.removeSelf();
+})
 
 function bookingForm(service) {
-  
+  const formTitle = document.getElementById("formTitle");
+  formTitle.textContent += " " + service;
+  displayForm.style.display = "flex";
 }
 
+const halfDayBtn = document.getElementById("halfDayBtn");
 halfDayBtn.addEventListener("click", () => {
-  bookingForm(halfDay);
+  bookingForm("Halvdag");
 });
 
+const fullDayBtn = document.getElementById("fullDayBtn");
 fullDayBtn.addEventListener("click", () => {
-  bookingForm(fullDay);
+  bookingForm("Heldag");
 });
 
+const longTermBtn = document.getElementById("longTermBtn");
 longTermBtn.addEventListener("click", () => {
-  bookingForm(longTerm);
+  bookingForm("Pensionat");
 });
 
+const careBtn = document.getElementById("careBtn");
 careBtn.addEventListener("click", () => {
-  bookingForm(care);
+  bookingForm("Pälsvård");
+});
+
+const cancelButton = document.getElementById("cancelButton");
+cancelButton.addEventListener("click", () => {
+  displayForm.style.display = "none";
 });
 
 const clearButton = document.getElementById("clearButton");
-
 clearButton.addEventListener("click", () => {
-  container.innerHTML = "";
+  displayBookings.innerHTML = "";
   bookedServices = [];
   localStorage.setItem("storedServices", JSON.stringify(bookedServices));
 
