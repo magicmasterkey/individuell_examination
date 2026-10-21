@@ -164,12 +164,12 @@ function checkTime() {
 /* Anropa "checkTime" varje 1000 millisekunder, dvs varje sekund */
 setInterval(checkTime, 1000);
 
-/* Bokade tjänster */
-let bookedServices = [];
-
+/* Bokning */
+const bookedServices = [];
 const bookingSection = document.getElementById("booking");
 const displayBookings = document.getElementById("bookingCardContainer");
 const displayForm = document.getElementById("formContainer");
+let activeBooking;
 
 class Order {
   constructor(service, dog) {
@@ -199,46 +199,100 @@ class Order {
     this.card.classList.add("bookingCard");
     this.getContent();
     this.removeButton = document.createElement("button");
+    this.removeButton.textContent = "Ta bort";
+    this.removeButton.classList.add("removeButton");
     this.card.append(this.title, this.description, this.removeButton);
     displayBookings.append(this.card);
   }
 
   removeSelf() {
-    this.card.innerHTML = "";
+    this.card.remove();
   }
 }
 
-const test = new Order("Halvdag", "Fido");
-test.createCard();
-
-test.removeButton.addEventListener("click", () => {
-  test.removeSelf();
-})
-
 function bookingForm(service) {
   const formTitle = document.getElementById("formTitle");
-  formTitle.textContent += " " + service;
+
+  formTitle.textContent = "Boka: " + service;
   displayForm.style.display = "flex";
+}
+
+const submitButton = document.getElementById("submitButton");
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const dogName = document.getElementById("dogName").value;
+  const toSubmit = { service: activeBooking, dog: dogName };
+  bookedServices.push(toSubmit);
+  displayForm.style.display = "none";
+  renderBookings();
+});
+
+function checkStorage() {
+  if (localStorage.length !== 0 && bookedServices.length === 0) {
+    const storage = JSON.parse(localStorage.getItem("storedBookings") || "[]");
+    storage.forEach((booking) => {
+      bookedServices.push(booking);
+    });
+  }
+  localStorage.setItem("storedBookings", JSON.stringify(bookedServices));
+}
+
+function updateStorage() {
+  localStorage.setItem("storedBookings", JSON.stringify(bookedServices));
+}
+
+function renderBookings() {
+  checkStorage();
+  if (bookedServices.length !== 0) {
+    displayBookings.innerHTML = "";
+  }
+
+  const toRender = JSON.parse(localStorage.getItem("storedBookings") || "[]");
+  toRender.forEach((item, index) => {
+    const card = new Order(item.service, item.dog);
+    card.createCard();
+    card.removeButton.addEventListener("click", () => {
+      card.removeSelf();
+      bookedServices.splice(index, 1);
+      updateStorage();
+      if (bookedServices.length === 0) {
+        renderPlaceHolder();
+      }
+    });
+  });
+}
+
+function renderPlaceHolder() {
+  displayBookings.innerHTML = "";
+  const placeholder = new Order("Inga bokningar ännu");
+  placeholder.createCard();
+  placeholder.description.textContent =
+    "När du bokat ett tjänst hos oss kommer den dyka upp här";
+  placeholder.removeButton.remove();
 }
 
 const halfDayBtn = document.getElementById("halfDayBtn");
 halfDayBtn.addEventListener("click", () => {
   bookingForm("Halvdag");
+  activeBooking = "Halvdag";
 });
 
 const fullDayBtn = document.getElementById("fullDayBtn");
 fullDayBtn.addEventListener("click", () => {
   bookingForm("Heldag");
+  activeBooking = "Heldag";
 });
 
 const longTermBtn = document.getElementById("longTermBtn");
 longTermBtn.addEventListener("click", () => {
   bookingForm("Pensionat");
+  activeBooking = "Pensionat";
 });
 
 const careBtn = document.getElementById("careBtn");
 careBtn.addEventListener("click", () => {
   bookingForm("Pälsvård");
+  activeBooking = "Pälsvård";
 });
 
 const cancelButton = document.getElementById("cancelButton");
@@ -248,21 +302,10 @@ cancelButton.addEventListener("click", () => {
 
 const clearButton = document.getElementById("clearButton");
 clearButton.addEventListener("click", () => {
-  displayBookings.innerHTML = "";
-  bookedServices = [];
-  localStorage.setItem("storedServices", JSON.stringify(bookedServices));
-
-  const bookedCard = document.createElement("article");
-  bookedCard.classList.add("bookingCard");
-  const bookedTitle = document.createElement("h3");
-  const bookedContent = document.createElement("p");
-  bookedContent.classList.add("mediumText");
-  bookedTitle.textContent = "Inga bokningar ännu.";
-  bookedContent.textContent =
-    "När du bokat ett tjänst hos oss kommer den dyka upp här";
-  bookedCard.append(bookedTitle, bookedContent);
-  container.append(bookedCard);
+  renderPlaceHolder();
 });
+
+renderBookings();
 
 /* Recensioner */
 const reviewTitle = document.getElementById("reviewTitle");
