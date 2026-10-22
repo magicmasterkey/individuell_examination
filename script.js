@@ -194,7 +194,7 @@ class Order {
       this.dog +
       ", datumet " +
       this.date +
-      ". Vad kul!"
+      ". Vad kul!";
   }
 
   createCard() {
@@ -225,10 +225,14 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   const dogName = document.getElementById("dogName").value;
   const date = document.getElementById("date").value;
-  const toSubmit = { service: activeBooking, dog: dogName, date: date };
-  bookedServices.push(toSubmit);
-  displayForm.style.display = "none";
-  renderBookings();
+  if (dogName && date) {
+    const toSubmit = { service: activeBooking, dog: dogName, date: date };
+    bookedServices.push(toSubmit);
+    displayForm.style.display = "none";
+    renderBookings();
+  } else {
+    alert("Vänligen fyll i fälten");
+  }
 });
 
 function checkStorage() {
