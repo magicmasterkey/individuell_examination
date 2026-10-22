@@ -123,13 +123,16 @@
         <h2 id="formTitle">Boka:</h2>
         <form>
           <label for="ownerName">Ditt namn:</label>
-          <input type="text" name="onwerName" id="ownerName" />
+          <input type="text" name="onwerName" id="ownerName" required="true" />
 
           <label for="dogName">Din hunds namn:</label>
-          <input type="text" name="dogName" id="dogName" />
+          <input type="text" name="dogName" id="dogName" required="true" />
 
           <label for="email">Din E-Postadress:</label>
           <input type="text" name="email" id="email" />
+
+          <label for="date">Datum:</label>
+          <input type="date" name="date" id="date" required="true">
 
           <button type="submit" id="submitButton">Boka</button>
         </form>

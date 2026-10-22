@@ -172,9 +172,10 @@ const displayForm = document.getElementById("formContainer");
 let activeBooking;
 
 class Order {
-  constructor(service, dog) {
+  constructor(service, dog, date) {
     this.service = service;
     this.dog = dog;
+    this.date = date;
     this.card;
     this.title;
     this.description;
@@ -191,7 +192,9 @@ class Order {
       this.service.toLowerCase() +
       '" hos oss, till din hund ' +
       this.dog +
-      ". Vad kul!";
+      ", datumet " +
+      this.date +
+      ". Vad kul!"
   }
 
   createCard() {
@@ -221,7 +224,8 @@ const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   const dogName = document.getElementById("dogName").value;
-  const toSubmit = { service: activeBooking, dog: dogName };
+  const date = document.getElementById("date").value;
+  const toSubmit = { service: activeBooking, dog: dogName, date: date };
   bookedServices.push(toSubmit);
   displayForm.style.display = "none";
   renderBookings();
@@ -249,7 +253,7 @@ function renderBookings() {
 
   const toRender = JSON.parse(localStorage.getItem("storedBookings") || "[]");
   toRender.forEach((item, index) => {
-    const card = new Order(item.service, item.dog);
+    const card = new Order(item.service, item.dog, item.date);
     card.createCard();
     card.removeButton.addEventListener("click", () => {
       card.removeSelf();
